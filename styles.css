@@ -352,7 +352,7 @@ body {
     overflow: hidden;
 }
 
-/* 2D Xəritə xətləri */
+/* Xəritə yolları */
 .map-view::before {
     content: '';
     position: absolute;
@@ -361,16 +361,32 @@ body {
     width: 100%;
     height: 100%;
     background: 
-        /* Horizontal yollar */
-        linear-gradient(0deg, transparent 30%, #ccc 30%, #ccc 32%, transparent 32%),
-        linear-gradient(0deg, transparent 65%, #ddd 65%, #ddd 67%, transparent 67%),
-        /* Vertikal yollar */
-        linear-gradient(90deg, transparent 25%, #ccc 25%, #ccc 27%, transparent 27%),
-        linear-gradient(90deg, transparent 70%, #ddd 70%, #ddd 72%, transparent 72%),
-        /* Diagonal xətt */
-        linear-gradient(45deg, transparent 48%, #e0e0e0 48%, #e0e0e0 50%, transparent 50%);
-    opacity: 0.7;
+        /* Əsas yol */
+        linear-gradient(45deg, transparent 45%, #ddd 45%, #ddd 55%, transparent 55%),
+        /* Köndələn yol */
+        linear-gradient(-45deg, transparent 35%, #ccc 35%, #ccc 40%, transparent 40%),
+        /* Şaquli yol */
+        linear-gradient(90deg, transparent 60%, #e0e0e0 60%, #e0e0e0 65%, transparent 65%);
+    opacity: 0.6;
     z-index: 1;
+}
+
+/* Binalar/Bloklar */
+.map-view::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 25%;
+    height: 25%;
+    background: #c8e6c9;
+    border-radius: 3px;
+    box-shadow: 
+        30px 20px 0 -5px #a5d6a7,
+        15px 40px 0 -10px #81c784,
+        -10px 30px 0 -8px #66bb6a;
+    opacity: 0.7;
+    z-index: 2;
 }
 
 .location-pin {
@@ -518,103 +534,127 @@ body {
     gap: 2rem;
 }
 
+/* Team Member Container */
 .team-member {
-    background: white;
-    padding: 2rem;
+    perspective: 1000px;
+    height: 400px;
+}
+
+/* Member Card - Flip Container */
+.member-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.team-member:hover .member-card {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back Faces */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: white;
+    padding: 2rem;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
     border: 1px solid transparent;
+    transition: box-shadow 0.3s ease;
 }
 
-.team-member::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, var(--light-green), rgba(255,255,255,0.5));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 0;
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--light-green), rgba(255,255,255,0.9));
 }
 
-.team-member:hover::before {
-    opacity: 1;
-}
-
-.team-member:hover {
-    transform: translateY(-10px) scale(1.03);
+.team-member:hover .card-front,
+.team-member:hover .card-back {
     box-shadow: 0 20px 50px rgba(56, 161, 105, 0.2);
     border-color: var(--secondary-green);
 }
 
-.team-member > * {
-    position: relative;
-    z-index: 1;
-}
-
+/* Front Side - Photo */
 .member-image {
     margin-bottom: 1.5rem;
 }
 
-.member-avatar {
+.member-photo {
     width: 120px;
     height: 120px;
-    background: linear-gradient(135deg, var(--light-green), var(--secondary-green));
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 8px 20px rgba(56, 161, 105, 0.2);
+    transition: all 0.3s ease;
+    border: 4px solid var(--light-green);
+}
+
+.card-front .member-info h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.card-front .member-role {
+    color: var(--primary-green);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Back Side - Icon and Details */
+.member-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    color: var(--primary-green);
-    font-size: 3rem;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 20px rgba(56, 161, 105, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.member-avatar::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-    transform: rotate(-45deg);
-    transition: all 0.6s ease;
-    opacity: 0;
-}
-
-.team-member:hover .member-avatar {
-    transform: scale(1.15) rotateY(360deg);
-    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    margin: 0 auto 1.5rem;
     color: white;
-    box-shadow: 0 15px 40px rgba(56, 161, 105, 0.4);
+    font-size: 2.5rem;
+    box-shadow: 0 8px 20px rgba(56, 161, 105, 0.3);
+    animation: iconPulse 2s ease-in-out infinite;
 }
 
-.team-member:hover .member-avatar::before {
-    animation: shine 1s ease-in-out;
-}
-
-@keyframes shine {
-    0% {
-        transform: rotate(-45deg) translate(-100%, -100%);
-        opacity: 0;
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
     }
     50% {
-        opacity: 1;
+        transform: scale(1.05);
     }
-    100% {
-        transform: rotate(-45deg) translate(100%, 100%);
-        opacity: 0;
-    }
+}
+
+.member-details h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.member-details .member-role {
+    color: var(--primary-green);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.member-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
 }
 
 .member-info h3 {
@@ -1066,4 +1106,180 @@ body {
         flex-wrap: wrap;
         justify-content: center;
     }
+}
+
+/* APK Download Button Styles */
+.apk-download-btn {
+    position: relative;
+    background: linear-gradient(135deg, #FF6B35, #FF8E53) !important;
+    color: white !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.apk-download-btn:hover {
+    background: linear-gradient(135deg, #E55A2B, #FF7043) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4) !important;
+}
+
+.apk-download-btn i {
+    margin-right: 8px;
+    animation: downloadBounce 2s ease-in-out infinite;
+}
+
+@keyframes downloadBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Team Member Flip Card Styles */
+.team-member {
+    perspective: 1000px !important;
+    height: 400px !important;
+    background: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+.member-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.team-member:hover .member-card {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--light-green), rgba(255,255,255,0.9));
+}
+
+.team-member:hover .card-front,
+.team-member:hover .card-back {
+    box-shadow: 0 20px 50px rgba(56, 161, 105, 0.2);
+    border-color: var(--secondary-green);
+}
+
+.member-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem;
+    display: block;
+    box-shadow: 0 8px 20px rgba(56, 161, 105, 0.2);
+    transition: all 0.3s ease;
+    border: 4px solid var(--light-green);
+}
+
+.card-front .member-info h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.card-front .member-role {
+    color: var(--primary-green);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.member-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 2.5rem;
+    box-shadow: 0 8px 20px rgba(56, 161, 105, 0.3);
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.member-details h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.member-details .member-role {
+    color: var(--primary-green);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.member-details .member-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.member-details .member-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.member-details .member-socials a {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.member-details .member-socials a:hover {
+    background: var(--primary-green);
+    color: white;
 } 

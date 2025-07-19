@@ -351,4 +351,32 @@ document.head.appendChild(floatingStyleSheet);
 // Initialize floating elements
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(createFloatingElements, 1000);
+});
+
+// APK Download Functionality
+const APK_DOWNLOAD_LINK = 'YOUR_APK_LINK_HERE'; // Bu linki dəyişməlisiniz
+
+function handleAPKDownload() {
+    if (APK_DOWNLOAD_LINK === 'YOUR_APK_LINK_HERE') {
+        showNotification('APK yüklənmə linki hələ təyin edilməyib. Zəhmət olmasa gözləyin.', 'error');
+        return;
+    }
+    
+    // Show download starting message
+    showNotification('APK yüklənməsi başlayır...', 'success');
+    
+    // Open download link
+    window.open(APK_DOWNLOAD_LINK, '_blank');
+}
+
+// Add click event listeners to APK download buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const apkButtons = document.querySelectorAll('.apk-download-btn');
+    
+    apkButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleAPKDownload();
+        });
+    });
 }); 
