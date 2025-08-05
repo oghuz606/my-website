@@ -83,7 +83,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.feature-card, .team-member, .main-achievement, .stat-item');
+    const animateElements = document.querySelectorAll('.feature-card, .team-member, .main-achievement, .stat-item, .partner-card');
     
     animateElements.forEach((el, index) => {
         el.style.opacity = '0';
@@ -131,7 +131,7 @@ function showNotification(message, type) {
     notification.className = `notification ${type}`;
     notification.innerHTML = `
         <div class="notification-content">
-            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'info' ? 'fa-info-circle' : 'fa-exclamation-circle'}"></i>
             <span>${message}</span>
             <button class="notification-close">
                 <i class="fas fa-times"></i>
@@ -144,7 +144,7 @@ function showNotification(message, type) {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? 'var(--primary-green)' : '#e53e3e'};
+        background: ${type === 'success' ? 'var(--primary-green)' : type === 'info' ? '#3182ce' : '#e53e3e'};
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 8px;
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(createFloatingElements, 1000);
 });
 
-// APK Download Functionality
+// Store Download Functionality
 const APK_DOWNLOAD_LINK = 'YOUR_APK_LINK_HERE'; // Bu linki dəyişməlisiniz
 
 function handleAPKDownload() {
@@ -369,14 +369,64 @@ function handleAPKDownload() {
     window.open(APK_DOWNLOAD_LINK, '_blank');
 }
 
-// Add click event listeners to APK download buttons
+function handlePlayStoreClick() {
+    showNotification('Play Store-da tətbiq yaxında istifadəyə veriləcək! 🚀', 'info');
+}
+
+function handleAppStoreClick() {
+    showNotification('App Store-da tətbiq yaxında istifadəyə veriləcək! 🍎', 'info');
+}
+
+// Add click event listeners to all store buttons
 document.addEventListener('DOMContentLoaded', () => {
+    // APK Download buttons
     const apkButtons = document.querySelectorAll('.apk-download-btn');
-    
     apkButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             handleAPKDownload();
+        });
+    });
+    
+    // Play Store buttons
+    const playStoreButtons = document.querySelectorAll('.btn-primary');
+    playStoreButtons.forEach(button => {
+        // Check if it's actually a Play Store button (has Google Play icon)
+        if (button.querySelector('.fa-google-play')) {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                handlePlayStoreClick();
+            });
+        }
+    });
+    
+    // App Store buttons
+    const appStoreButtons = document.querySelectorAll('.btn-apple');
+    appStoreButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleAppStoreClick();
+        });
+    });
+});
+
+// Team Member Click to Flip Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const teamMembers = document.querySelectorAll('.team-member');
+    
+    teamMembers.forEach(member => {
+        member.addEventListener('click', () => {
+            // Toggle flipped class
+            member.classList.toggle('flipped');
+        });
+        
+        // Optional: Close other cards when one is opened
+        member.addEventListener('click', () => {
+            teamMembers.forEach(otherMember => {
+                if (otherMember !== member) {
+                    otherMember.classList.remove('flipped');
+                }
+            });
         });
     });
 }); 
