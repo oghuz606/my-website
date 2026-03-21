@@ -49,7 +49,7 @@ window.addEventListener('scroll', () => {
 window.addEventListener('scroll', () => {
     let current = '';
     const sections = document.querySelectorAll('section');
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -84,7 +84,7 @@ const observer = new IntersectionObserver((entries) => {
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.feature-card, .team-member, .main-achievement, .stat-item, .partner-card');
-    
+
     animateElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(50px)';
@@ -97,19 +97,19 @@ document.addEventListener('DOMContentLoaded', () => {
 const contactForm = document.querySelector('.contact-form form');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         // Get form data
         const name = this.querySelector('input[type="text"]').value;
         const email = this.querySelector('input[type="email"]').value;
         const message = this.querySelector('textarea').value;
-        
+
         // Basic validation
         if (name && email && message) {
             // Show success message
             showNotification('Mesajınız uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.', 'success');
-            
+
             // Reset form
             this.reset();
         } else {
@@ -125,7 +125,7 @@ function showNotification(message, type) {
     if (existingNotification) {
         existingNotification.remove();
     }
-    
+
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
@@ -138,7 +138,7 @@ function showNotification(message, type) {
             </button>
         </div>
     `;
-    
+
     // Add styles
     notification.style.cssText = `
         position: fixed;
@@ -155,16 +155,16 @@ function showNotification(message, type) {
         transition: all 0.3s ease;
         max-width: 400px;
     `;
-    
+
     // Add to page
     document.body.appendChild(notification);
-    
+
     // Animate in
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Close button functionality
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
@@ -172,7 +172,7 @@ function showNotification(message, type) {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => notification.remove(), 300);
     });
-    
+
     // Auto-remove after 5 seconds
     setTimeout(() => {
         if (notification.parentNode) {
@@ -218,14 +218,14 @@ document.head.appendChild(styleSheet);
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
     const increment = target / (duration / 16);
-    
+
     const timer = setInterval(() => {
         start += increment;
         if (start >= target) {
             start = target;
             clearInterval(timer);
         }
-        
+
         // Format number for display
         let displayValue = Math.floor(start);
         if (target >= 1000) {
@@ -234,7 +234,7 @@ function animateCounter(element, target, duration = 2000) {
                 displayValue = Math.floor(start / 1000) + 'K';
             }
         }
-        
+
         // Special cases for percentage and 24/7
         if (element.textContent.includes('%')) {
             element.textContent = Math.floor(start) + '%';
@@ -254,7 +254,7 @@ const statsObserver = new IntersectionObserver((entries) => {
             statNumbers.forEach((stat, index) => {
                 const text = stat.textContent;
                 let target = 0;
-                
+
                 if (text.includes('500')) target = 500;
                 else if (text.includes('10,000') || text.includes('10K')) target = 10000;
                 else if (text.includes('99')) target = 99;
@@ -262,7 +262,7 @@ const statsObserver = new IntersectionObserver((entries) => {
                     stat.textContent = '24/7';
                     return;
                 }
-                
+
                 if (target > 0) {
                     stat.textContent = '0';
                     setTimeout(() => {
@@ -270,7 +270,7 @@ const statsObserver = new IntersectionObserver((entries) => {
                     }, index * 200);
                 }
             });
-            
+
             statsObserver.unobserve(entry.target);
         }
     });
@@ -280,7 +280,7 @@ const statsObserver = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', () => {
     const heroStats = document.querySelector('.hero-stats');
     const mainStats = document.querySelector('.stats-grid');
-    
+
     if (heroStats) {
         statsObserver.observe(heroStats);
     }
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.8s ease';
-    
+
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add floating background elements
 function createFloatingElements() {
     const hero = document.querySelector('.hero');
-    
+
     for (let i = 0; i < 3; i++) {
         const floatingElement = document.createElement('div');
         floatingElement.style.cssText = `
@@ -361,10 +361,10 @@ function handleAPKDownload() {
         showNotification('APK yüklənmə linki hələ təyin edilməyib. Zəhmət olmasa gözləyin.', 'error');
         return;
     }
-    
+
     // Show download starting message
     showNotification('APK yüklənməsi başlayır...', 'success');
-    
+
     // Open download link
     window.open(APK_DOWNLOAD_LINK, '_blank');
 }
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
             handleAPKDownload();
         });
     });
-    
+
     // Play Store buttons
     const playStoreButtons = document.querySelectorAll('.btn-primary');
     playStoreButtons.forEach(button => {
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-    
+
     // App Store buttons
     const appStoreButtons = document.querySelectorAll('.btn-apple');
     appStoreButtons.forEach(button => {
@@ -413,13 +413,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // Team Member Click to Flip Functionality
 document.addEventListener('DOMContentLoaded', () => {
     const teamMembers = document.querySelectorAll('.team-member');
-    
+
     teamMembers.forEach(member => {
         member.addEventListener('click', () => {
             // Toggle flipped class
             member.classList.toggle('flipped');
         });
-        
+
         // Optional: Close other cards when one is opened
         member.addEventListener('click', () => {
             teamMembers.forEach(otherMember => {
@@ -429,4 +429,37 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+});
+
+// Custom Mouse Dot
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        
+        const dot = document.createElement('div');
+        dot.className = 'mouse-dot';
+        document.body.appendChild(dot);
+
+        window.addEventListener('mousemove', (e) => {
+            // Instant move for the center dot
+            dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        });
+
+        // Magnetic / Hover effects for interactive elements
+        const interactives = document.querySelectorAll('a, button, .bento-card, .feature-card, .team-member, .nav-logo');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                dot.style.width = '12px';
+                dot.style.height = '12px';
+                dot.style.background = '#f97316';
+                dot.style.boxShadow = '0 0 15px #f97316';
+            });
+
+            el.addEventListener('mouseleave', () => {
+                dot.style.width = '6px';
+                dot.style.height = '6px';
+                dot.style.background = 'var(--primary-green)';
+                dot.style.boxShadow = '0 0 10px var(--primary-green)';
+            });
+        });
+    }
 }); 

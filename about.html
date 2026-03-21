@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haqqımızda - One Pharm</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0ea5e9">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+    <style>
+        /* Premium Background & Hero */
+        body { background-color: #f7fafc; }
+        
+        .premium-hero {
+            padding-top: 160px;
+            padding-bottom: 60px;
+            position: relative;
+            text-align: center;
+        }
+
+        .premium-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .premium-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-green-dark), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .premium-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Bento Grid Layout */
+        .bento-section {
+            padding: 40px 0 100px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(280px, auto);
+            gap: 24px;
+        }
+
+        .bento-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(56, 161, 105, 0.1);
+        }
+
+        /* Spans */
+        .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
+        .row-span-2 { grid-row: span 2; }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-icon.red { background: linear-gradient(135deg, #f56565, #c53030); -webkit-background-clip: text;}
+        .card-icon.blue { background: linear-gradient(135deg, #4299e1, #2b6cb0); -webkit-background-clip: text;}
+        .card-icon.orange { background: linear-gradient(135deg, #ed8936, #c05621); -webkit-background-clip: text;}
+
+        .bento-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .bento-card p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .dark-card {
+            background: linear-gradient(145deg, #1a202c, #2d3748);
+            color: white;
+            border: none;
+        }
+
+        .dark-card h3 { color: white; }
+        .dark-card p { color: #cbd5e0; }
+        .dark-card .card-icon { 
+            background: linear-gradient(135deg, #68d391, #f0fff4); 
+            -webkit-background-clip: text;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+            color: white;
+        }
+        .highlight-card h3 { color: white; }
+        .highlight-card p { color: rgba(255,255,255,0.9); }
+        .highlight-card .card-icon { background: white; -webkit-background-clip: text; }
+
+        @media (max-width: 992px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .span-2 { grid-column: span 2; }
+            .span-3 { grid-column: span 2; }
+            .premium-title { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .span-2, .row-span-2, .span-3 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" style="text-decoration: none;">
+                <img src="images/favicon-32.png" alt="OnePharm Logo" style="height: 32px; width: auto; margin-right: 8px; border-radius: 6px;">
+                <span>One Pharm</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Ana Səhifə</a></li>
+                <li><a href="index.html#about" class="nav-link">Tətbiq</a></li>
+                <li><a href="index.html#team" class="nav-link">Komanda</a></li>
+                <li><a href="index.html#achievements" class="nav-link">Uğurlar</a></li>
+                <li><a href="index.html#partners" class="nav-link">Tərəfdaşlar</a></li>
+                <li><a href="#" class="nav-link-btn active">Haqqımızda</a></li>
+                <li><a href="index.html" class="nav-download-btn">İndi Yüklə</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Premium Hero Section -->
+    <header class="premium-hero">
+        <div class="container">
+            <h1 class="premium-title">Səhiyyədə Rəqəmsal Transformasiya</h1>
+            <p class="premium-subtitle">Apteklər, istifadəçilər və tibb xidmətləri arasında əlaqəni vahid sistem üzərindən təşkil edərək dərmanlara çıxışı daha asan, sürətli və şəffaf etmək.</p>
+        </div>
+    </header>
+
+    <!-- Bento Grid Section -->
+    <section class="bento-section">
+        <div class="container">
+            <div class="bento-grid">
+                
+                <!-- Card 1 -->
+                <div class="bento-card span-2 highlight-card">
+                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Missiyamız</h3>
+                    <p><strong>OnePharm</strong> — səhiyyə sahəsində mövcud olan problemləri həll etmək məqsədilə yaradılmış innovativ rəqəmsal platformadır. Layihənin əsas məqsədi apteklər, istifadəçilər və tibb xidmətləri arasında əlaqəni yenidən formalaşdırmaqdır.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bento-card">
+                    <div class="card-icon red"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3>Problemlər</h3>
+                    <p>Hazırda Azərbaycanda dərman əldə etmək prosesi bir çox hallarda çətin və vaxt aparan olur. İstifadəçilər ehtiyacları olan dərmanı tapmaq üçün bir neçə apteki gəzməli olur.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card row-span-2 dark-card">
+                    <div class="card-icon"><i class="fas fa-laptop-medical"></i></div>
+                    <h3>Platformanın Həlli</h3>
+                    <p>OnePharm layihəsi məhz bu problemləri aradan qaldırmaq üçün nəzərdə tutulmuşdur. <br><br>Layihə vasitəsilə istifadəçilər dərmanları asanlıqla axtara, müxtəlif apteklər üzrə mövcudluğunu yoxlaya və daha uyğun seçim edə bilərlər. Bununla yanaşı, reseptlərin rəqəmsallaşdırılması və proseslərin avtomatlaşdırılması səhiyyə xidmətlərinin daha effektiv şəkildə təşkilinə imkan yaradır.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card">
+                    <div class="card-icon blue"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Şəffaflıq</h3>
+                    <p>İstifadəçilər dərmanların qiymətləri və mövcudluğu haqqında dəqiq məlumat əldə edə bilir, bu isə daha düzgün qərar verməyə kömək edir, vaxta xeyli qənaət edir.</p>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="bento-card">
+                    <div class="card-icon orange"><i class="fas fa-robot"></i></div>
+                    <h3>Müasir Texnologiyalar</h3>
+                    <p>OnePharm təhlükəsiz, genişlənə bilən platforma kimi qurulur. Gələcəkdə süni intellekt əsaslı həllərin tətbiqi ilə fərdiləşdirilmiş xidmətlərin təqdim olunması planlaşdırılır.</p>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="index.html" class="footer-logo" style="text-decoration: none; color: inherit;">
+                    <i class="fas fa-pills"></i>
+                    <span>One Pharm</span>
+                </a>
+                <div class="footer-links">
+                    <a href="index.html#home">Ana Səhifə</a>
+                    <a href="index.html#about">Tətbiq</a>
+                    <a href="index.html#team">Komanda</a>
+                    <a href="index.html#achievements">Uğurlar</a>
+                    <a href="index.html#partners">Tərəfdaşlar</a>
+                    <a href="#">Haqqımızda</a>
+                    <a href="index.html#contact">Əlaqə</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook səhifəsi">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram səhifəsi">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter səhifəsi">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn səhifəsi">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 One Pharm. Bütün hüquqlar qorunur. | Developed with ❤️ for healthcare</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

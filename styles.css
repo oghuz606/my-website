@@ -18,7 +18,7 @@ body {
 
 /* Color Variables */
 :root {
-    --primary-green: #38a169;
+    --primary-green: #069c40;
     --primary-green-dark: #2f855a;
     --secondary-green: #68d391;
     --light-green: #f0fff4;
@@ -88,6 +88,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -175,7 +176,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s;
 }
 
@@ -308,9 +309,12 @@ body {
 }
 
 @keyframes phoneFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-20px);
     }
@@ -362,7 +366,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         /* Əsas yol */
         linear-gradient(45deg, transparent 45%, #ddd 45%, #ddd 55%, transparent 55%),
         /* Köndələn yol */
@@ -383,10 +387,10 @@ body {
     height: 25%;
     background: #c8e6c9;
     border-radius: 3px;
-    box-shadow: 
+    box-shadow:
         30px 20px 0 -5px #a5d6a7,
         15px 40px 0 -10px #81c784,
-        -10px 30px 0 -8px #66bb6a;
+        -10px 30px 0 -8px #3bbd62;
     opacity: 0.7;
     z-index: 2;
 }
@@ -396,14 +400,17 @@ body {
     color: var(--primary-green);
     z-index: 3;
     position: relative;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     animation: pinBounce 2s ease-in-out infinite;
 }
 
 @keyframes pinBounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-5px);
     }
@@ -486,7 +493,7 @@ body {
     border-color: var(--accent-green);
 }
 
-.feature-card > * {
+.feature-card>* {
     position: relative;
     z-index: 1;
 }
@@ -574,7 +581,7 @@ body {
 
 .card-back {
     transform: rotateY(180deg);
-    background: linear-gradient(135deg, var(--light-green), rgba(255,255,255,0.9));
+    background: linear-gradient(135deg, var(--light-green), rgba(255, 255, 255, 0.9));
 }
 
 .team-member.flipped .card-front,
@@ -630,9 +637,12 @@ body {
 }
 
 @keyframes iconPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
@@ -1066,7 +1076,7 @@ body {
         align-items: center;
         gap: 0.75rem;
     }
-    
+
     .hero-buttons .btn {
         width: 200px;
         justify-content: center;
@@ -1137,9 +1147,12 @@ body {
 }
 
 @keyframes applePulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
@@ -1166,9 +1179,12 @@ body {
 }
 
 @keyframes downloadBounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-3px);
     }
@@ -1280,33 +1296,33 @@ body {
     .partners {
         padding: 3rem 0;
     }
-    
+
     .partners-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
         margin-top: 2rem;
     }
-    
+
     .partner-card {
         padding: 2rem 1.5rem;
     }
-    
+
     .partner-logo {
         width: 130px;
         height: 130px;
         padding: 15px;
         margin-bottom: 1.5rem;
     }
-    
+
     .partner-logo i {
         font-size: 1.75rem;
     }
-    
+
     .partner-logo-img {
         width: 100%;
         height: 100%;
     }
-    
+
     .partner-card h3 {
         font-size: 1.1rem;
     }
@@ -1356,7 +1372,7 @@ body {
 
 .card-back {
     transform: rotateY(180deg);
-    background: linear-gradient(135deg, var(--light-green), rgba(255,255,255,0.9));
+    background: linear-gradient(135deg, var(--light-green), rgba(255, 255, 255, 0.9));
 }
 
 .team-member.flipped .card-front,
@@ -1406,9 +1422,12 @@ body {
 }
 
 @keyframes iconPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.05);
     }
@@ -1457,4 +1476,92 @@ body {
 .member-details .member-socials a:hover {
     background: var(--primary-green);
     color: white;
-} 
+}
+
+/* Idea Section */
+.idea {
+    background: white;
+}
+
+.idea-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    text-align: justify;
+}
+
+.idea-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.idea-content p:last-child {
+    margin-bottom: 0;
+}
+
+.idea-content strong {
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+/* Nav Button */
+.nav-link-btn {
+    background: var(--light-green);
+    color: var(--primary-green);
+    border: 1px solid var(--primary-green);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-link-btn:hover,
+.nav-link-btn.active {
+    background: var(--primary-green);
+    color: white;
+}
+
+/* Nav Download Button (Orange) */
+.nav-download-btn {
+    background: #f97316;
+    color: white !important;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-download-btn:hover {
+    background: #ea580c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+/* Custom Mouse Dot */
+.mouse-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--primary-green);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    will-change: transform, width, height, box-shadow;
+    box-shadow: 0 0 10px var(--primary-green);
+    transition: width 0.3s, height 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+@media (max-width: 768px) {
+    .mouse-dot {
+        display: none !important;
+    }
+}
